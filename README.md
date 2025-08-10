@@ -1,24 +1,59 @@
-# README
+# テーブル設計
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column         | Type        | Options                   |
+|----------------|-------------|---------------------------|
+| nickname       | string(30)  | null: false               |
+| email          | string(255) | null: false, unique: true |
+| password_hash  | string(255) | null: false               |
+| last_name      | string(20)  | null: false               |
+| first_name     | string(20)  | null: false               |
+| last_name_kana | string(40)  | null: false               |
+| first_name_kana| string(40)  | null: false               |
+| birth_date     | date        | null: false               |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :orders
 
-* Ruby version
+## items テーブル
 
-* System dependencies
+| Column       | Type         | Options                        |
+|--------------|--------------|--------------------------------|
+| image_url    | string(255)  | null: false                    |
+| name         | string(40)   | null: false                    |
+| description  | text         | null: false                    |
+| category_id  | integer      | null: false                    |
+| condition_id | integer      | null: false                    |
+| user_id      | bigint       | null: false, foreign_key: true |
 
-* Configuration
+### Association
+- belongs_to :user
+- has_one :order
 
-* Database creation
+## orders テーブル
 
-* Database initialization
+| Column  | Type   | Options                        |
+|---------|--------|--------------------------------|
+| user_id | bigint | null: false, foreign_key: true |
+| item_id | bigint | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
-* Services (job queues, cache servers, search engines, etc.)
+## addresses テーブル
 
-* Deployment instructions
+| Column        | Type        | Options                        |
+|---------------|-------------|--------------------------------|
+| order_id      | bigint      | null: false, foreign_key: true |
+| postal_code   | string(10)  | null: false                    |
+| prefecture_id | integer     | null: false                    |
+| city          | string(50)  | null: false                    |
+| street        | string(50)  | null: false                    |
+| building      | string(50)  |                                |
+| phone_number  | string(15)  | null: false                    |
 
-* ...
+### Association
+- belongs_to :order
