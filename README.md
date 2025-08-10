@@ -37,7 +37,7 @@
 | Column  | Type   | Options                        |
 |---------|--------|--------------------------------|
 | user    | references | null: false, foreign_key: true |
-| item_id | bigint     | null: false, foreign_key: true |
+| item    | bigint     | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
