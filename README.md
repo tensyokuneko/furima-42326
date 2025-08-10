@@ -20,12 +20,13 @@
 
 | Column       | Type         | Options                        |
 |--------------|--------------|--------------------------------|
-|                    |
-| name         | string(40)   | null: false                    |
+| | name         | string(40)   | null: false                    |
 | description  | text         | null: false                    |
 | category_id  | integer      | null: false                    |
 | condition_id | integer      | null: false                    |
 | user_id      | bigint       | null: false, foreign_key: true |
+| price        | integer      | null: false                    |
+
 
 ### Association
 - belongs_to :user
