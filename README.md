@@ -20,7 +20,7 @@
 
 | Column       | Type         | Options                        |
 |--------------|--------------|--------------------------------|
-| image_url    | string(255)  | null: false                    |
+|                    |
 | name         | string(40)   | null: false                    |
 | description  | text         | null: false                    |
 | category_id  | integer      | null: false                    |
