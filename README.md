@@ -52,7 +52,7 @@
 
 | Column        | Type        | Options                        |
 |---------------|-------------|--------------------------------|
-| order         | bigint      | null: false, foreign_key: true |
+| order         | references  | null: false, foreign_key: true |
 | postal_code   | string(10)  | null: false                    |
 | prefecture_id | integer     | null: false                    |
 | city          | string(50)  | null: false                    |
