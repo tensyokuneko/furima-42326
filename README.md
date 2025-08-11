@@ -1,16 +1,16 @@
 # テーブル設計
 ## users テーブル
 
-| Column         | Type        | Options                   |
-|----------------|-------------|---------------------------|
-| nickname       | string(30)  | null: false               |
-| email          | string(255) | null: false, unique: true |
-| password_hash  | string(255) | null: false               |
-| last_name      | string(20)  | null: false               |
-| first_name     | string(20)  | null: false               |
-| last_name_kana | string(40)  | null: false               |
-| first_name_kana| string(40)  | null: false               |
-| birth_date     | date        | null: false               |
+| Column             | Type        | Options                   |
+|----------------    |-------------|---------------------------|
+| nickname           | string(30)  | null: false               |
+| email              | string(255) | null: false, unique: true |
+| encrypted_password | string(255) | null: false               |
+| last_name          | string(20)  | null: false               |
+| first_name         | string(20)  | null: false               |
+| last_name_kana     | string(40)  | null: false               |
+| first_name_kana    | string(40)  | null: false               |
+| birth_date         | date        | null: false               |
 
 ### Association
 - has_many :items
