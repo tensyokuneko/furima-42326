@@ -19,4 +19,7 @@ class User < ApplicationRecord
   # パスワード：英字&数字の両方を含む（Deviseの長さ6以上はそのまま利用）
   validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d).+\z/ },
                        if: -> { password.present? }
+
+has_many :items, dependent: :destroy
+
 end
