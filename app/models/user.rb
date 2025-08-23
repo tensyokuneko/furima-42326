@@ -20,6 +20,5 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d).+\z/ },
                        if: -> { password.present? }
 
-has_many :items, dependent: :destroy
-
+  has_many :items, dependent: :destroy
 end
