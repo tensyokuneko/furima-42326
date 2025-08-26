@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :move_to_root, only: [:edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -43,5 +44,11 @@ class ItemsController < ApplicationController
       :shipping_fee_id, :prefecture_id, :shipping_days_id,
       :price, :image
     )
+  end
+
+  def move_to_root
+    if @item.user != current_user
+      redirect_to root_path
+    end
   end
 end
