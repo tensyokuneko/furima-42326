@@ -21,4 +21,6 @@ class User < ApplicationRecord
                        if: -> { password.present? }
 
   has_many :items, dependent: :destroy
+  has_many :orders
+
 end
