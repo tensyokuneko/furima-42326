@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :move_to_root, only: [:edit, :update]
 
   def index
@@ -52,4 +52,4 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end  
   end
-
+end
