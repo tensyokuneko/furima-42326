@@ -8,6 +8,15 @@ class OrderAddress
   # バリデーションはあとで追記します
 
   def save
-    # 各テーブルにデータを保存する処理はあとで書きます
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(
+      order_id: order.id,
+      postal_code: post_code,
+      prefecture_id: prefecture_id,
+      city: city,
+      street: address,
+      building: building,
+      phone_number: phone_number
+    )
   end
 end
