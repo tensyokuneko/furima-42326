@@ -5,14 +5,15 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_address_params)
-    binding.pry
-    #if @order_address.valid?
-      #@order_address.save
-      #redirect_to root_path
-    #else
-      #render :index, status: :unprocessable_entity
-    #end
+    
+    if @order_address.valid?
+      @order_address.save
+      redirect_to root_path
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
