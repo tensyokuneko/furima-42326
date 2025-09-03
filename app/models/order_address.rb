@@ -1,5 +1,3 @@
-# app/models/order_address.rb
-
 class OrderAddress
   include ActiveModel::Model
   attr_accessor :post_code, :prefecture_id, :city, :address, :building, :phone_number,
