@@ -28,6 +28,11 @@ const pay = () => {
 
         const tokenObj = `<input value="${token}" type="hidden" name="token">`;
         form.insertAdjacentHTML("beforeend", tokenObj);
+
+        number.clear();
+        expiry.clear();
+        cvc.clear();
+
       
         
       }
