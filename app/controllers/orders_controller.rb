@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order_address = OrderAddress.new(order_address_params)
+    @order_address = OrderAddress.new(order_address_params.merge(token: params[:token]))
+
       
     if @order_address.valid?
       @order_address.save
