@@ -33,6 +33,9 @@ const pay = () => {
         expiry.clear();
         cvc.clear();
 
+        form.submit();
+
+
       
         
       }
