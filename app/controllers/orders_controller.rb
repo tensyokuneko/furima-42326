@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  require 'payjp'
+
   before_action :set_item
 
   def index
