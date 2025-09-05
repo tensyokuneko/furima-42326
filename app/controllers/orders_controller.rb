@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
-    @order_address = OrderAddress.new   
+    @order_address = OrderAddress.new
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']   
   end
 
   def create
