@@ -4,6 +4,8 @@ const pay = () => {
   const cvcElement = document.getElementById("cvc-form");
 
   const payjp = Payjp(gon.public_key); 
+  console.log("公開鍵", gon.public_key);
+
   const elements = payjp.elements();
 
   const number = elements.create("cardNumber");
