@@ -86,3 +86,6 @@ end
 
 gem 'active_hash'
 
+gem 'gon'
+
+
