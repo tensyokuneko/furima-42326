@@ -21,6 +21,7 @@ class OrderAddress
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
   def save
+    item = Item.find(item_id)
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: item.price,

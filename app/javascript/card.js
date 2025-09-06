@@ -24,6 +24,7 @@ const pay = () => {
     e.preventDefault();
 
     payjp.createToken(number).then((response) => {
+      
       if (response.error) {
         alert(response.error.message);
       } else {

@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-
-
   before_action :set_item
 
   def index
@@ -9,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order_address = OrderAddress.new(
       order_address_params.merge(token: params[:token]))
 
