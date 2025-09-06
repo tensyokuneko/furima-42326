@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!  
   before_action :set_item
+  before_action :redirect_if_invalid_access, only: [:index, :create] 
+
 
   def index
     @order_address = OrderAddress.new
@@ -44,6 +47,13 @@ class OrdersController < ApplicationController
         user_id: current_user.id, 
         item_id: params[:item_id]
       )
+  end
+
+  def redirect_if_invalid_access
+  
+    if current_user.id == @item.user_id || @item.order.present?
+      redirect_to root_path
+    end
   end
 
   
