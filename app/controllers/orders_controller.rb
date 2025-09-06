@@ -46,6 +46,6 @@ class OrdersController < ApplicationController
       )
   end
 
-  d
+  
 end
 
