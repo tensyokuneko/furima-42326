@@ -1,13 +1,14 @@
 const pay = () => {
+  const publicKey = gon.public_key;
+  const payjp = Payjp(publicKey);
+  const elements = payjp.elements();
+
+
   const numberElement = document.getElementById("number-form");
   const expiryElement = document.getElementById("expiry-form");
   const cvcElement = document.getElementById("cvc-form");
 
-  const payjp = Payjp(gon.public_key); 
-  console.log("公開鍵", gon.public_key);
-
-  const elements = payjp.elements();
-
+ 
   const number = elements.create("cardNumber");
   number.mount("#number-form");
 
