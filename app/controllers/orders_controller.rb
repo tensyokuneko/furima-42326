@@ -9,8 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order_address = OrderAddress.new(order_address_params)
-    
+    @order_address = OrderAddress.new(order_address_params.merge(token: params[:token]))
     if @order_address.valid?
 
       @order_address.save
@@ -36,11 +35,12 @@ class OrdersController < ApplicationController
         :address,
         :building,
         :phone_number,
-        :token
+        
       )
       .merge(
         user_id: current_user.id,
-        item_id: params[:item_id]
+        item_id: params[:item_id],
+        token: params[:token] 
       )
   end
 
