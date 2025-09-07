@@ -1,18 +1,18 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :post_code, 
-                :prefecture_id, :city, 
-                :address, :building, 
+  attr_accessor :post_code,
+                :prefecture_id, :city,
+                :address, :building,
                 :phone_number,
-                :user_id, 
+                :user_id,
                 :item_id,
                 :token
 
   with_options presence: true do
-    validates :post_code,     format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :post_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :city
     validates :address
-    validates :phone_number,  format: { with: /\A\d{10,11}\z/ }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     validates :user_id
     validates :item_id
     validates :token
@@ -20,14 +20,14 @@ class OrderAddress
 
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
-    def save
-      item = Item.find(item_id)
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-      Payjp::Charge.create(
-        amount: item.price,
-        card: token,
-        currency: 'jpy'
-      )
+  def save
+    item = Item.find(item_id)
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: item.price,
+      card: token,
+      currency: 'jpy'
+    )
 
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(
