@@ -42,18 +42,14 @@ const pay = () => {
         expiry.clear();
         cvc.clear();
 
-        form.submit();
-
-
-      
+        form.submit();   
         
       }
     });
   });
-
-
-
   
 };
 
 window.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", pay);
+
