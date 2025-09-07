@@ -62,6 +62,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
 
+      it 'phone_numberに半角数字以外が含まれていると保存できないこと' do
+        @order_address.phone_number = '090-1234-5678' 
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
       it 'tokenが空だと保存できないこと' do
         @order_address.token = ''
         @order_address.valid?
