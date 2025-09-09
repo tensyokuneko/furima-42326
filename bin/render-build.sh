@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# exit on error         ← エラーが出たら止める
+# exit on error         
 set -o errexit
 
 bundle install          
