@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :last_name_kana,  format: { with: KATAKANA_REGEX }
 
   
-  validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/ }
+  validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/ },
                        if: -> { password.present? }
 
   has_many :items, dependent: :destroy
